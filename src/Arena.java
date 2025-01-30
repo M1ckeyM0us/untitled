@@ -19,7 +19,7 @@ public class Arena extends JPanel {
             int xSpeed = (int) (Math.random() * 10) + 1;
             int ySpeed = (int) (Math.random() * 10) + 1;
             int size = (int) (Math.random() * 30) + 20;
-            Color color = new Color((int) (Math.random() * 256), (int) (Math.random() * 256), (int) (Math.random() * 256)); // Random color
+            Color color = new Color((int) (Math.random() * 256), (int) (Math.random() * 256), (int) (Math.random() * 256));
 
             balls.add(new Ball(x, y, xSpeed, ySpeed, size, color));
 
