@@ -4,13 +4,11 @@ import javax.swing.*;
 
 public class Arena extends JPanel {
 
-    private ArrayList<Ball> balls;
+    ArrayList<Ball> balls = new ArrayList<>();
+
 
     public Arena() {
         setBackground(Color.BLUE);
-
-        // Initialize balls
-        balls = new ArrayList<>();
 
         for (int i = 0; i < 20; i++) {
 
@@ -27,6 +25,9 @@ public class Arena extends JPanel {
     }
 
     public void paintComponent(Graphics g) {
+
+        // I had to add this since it
+        // wasnt working on my pc properly
         super.paintComponent(g);
 
         for (Ball ball: balls) {
