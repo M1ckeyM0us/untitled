@@ -1,4 +1,8 @@
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseListener;
 import java.util.*;
 import javax.swing.*;
 
@@ -6,6 +10,8 @@ public class Arena extends JPanel {
 
     ArrayList<Ball> balls = new ArrayList<>();
 
+
+    Ball me = new Ball(400,400,0,0,50,Color.BLACK);
 
     public Arena() {
         setBackground(Color.BLUE);
@@ -22,6 +28,58 @@ public class Arena extends JPanel {
             balls.add(new Ball(x, y, xSpeed, ySpeed, size, color));
 
         }
+
+//        setFocusable(true);
+//
+//        addMouseListener(new MouseAdapter() {
+//            @Override
+//            public void mousePressed(MouseEvent e) {
+//
+//                System.out.println(e.getX() + "," + e.getY());
+//
+//            }
+//
+//        });
+
+        setFocusable(true);
+
+        addKeyListener(new KeyAdapter() {
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+                if(e.getKeyCode() == KeyEvent.VK_W){
+
+                    me.setY(me.getY() - 4);
+
+                }
+
+                else if(e.getKeyCode() == KeyEvent.VK_S){
+
+                    me.setY(me.getY() + 4);
+
+                }
+
+                else if(e.getKeyCode() == KeyEvent.VK_D){
+
+                    me.setX(me.getX() + 4);
+
+                }
+
+                else if(e.getKeyCode() == KeyEvent.VK_A){
+
+                    me.setX(me.getX() - 4);
+
+                }
+
+                System.out.println(e.getKeyCode());
+
+            }
+
+
+        });
+
+
     }
 
     public void paintComponent(Graphics g) {
@@ -29,6 +87,8 @@ public class Arena extends JPanel {
         // I had to add this since it
         // wasnt working on my pc properly
         super.paintComponent(g);
+
+        me.draw(g);
 
         for (Ball ball: balls) {
 
@@ -55,4 +115,3 @@ public class Arena extends JPanel {
     }
 
 }
-
